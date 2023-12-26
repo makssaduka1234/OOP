@@ -38,7 +38,7 @@ public class ReservationManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error ");
+            Console.WriteLine("Error AddRestaurant");
         }
     }
     private void LoadRestaurantsFromFile(string fileP)
@@ -61,7 +61,7 @@ public class ReservationManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error");
+            Console.WriteLine("Error LoadRestaurantsFromFile");
         }
     }
     public List<string> FindAllFreeTables(DateTime dt)
@@ -83,7 +83,7 @@ public class ReservationManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error");
+            Console.WriteLine("Error FindAllFreeTables");
             return new List<string>();
         }
     }
@@ -116,8 +116,8 @@ public class ReservationManager
                 swapped = false;
                 for (int i = 0; i < res.Count - 1; i++)
                 {
-                    int avTc = CountAvailableTables(res[i], dt); // available tables current
-                    int avTn = CountAvailableTables(res[i + 1], dt); // available tables next
+                    int avTc = CountAvailableTables(res[i], dt);
+                    int avTn = CountAvailableTables(res[i + 1], dt);
 
                     if (avTc < avTn)
                     {
@@ -131,7 +131,7 @@ public class ReservationManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error");
+            Console.WriteLine("Error SortResByAvail");
         }
     }
     public int CountAvailableTables(Restaurant r, DateTime dt)
@@ -150,7 +150,7 @@ public class ReservationManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error");
+            Console.WriteLine("Error CountAvailableTables");
             return 0;
         }
     }
@@ -164,33 +164,33 @@ public class Restaurant
 
 public class RestaurantTable
 {
-    private List<DateTime> bd;
+    private List<DateTime> basedate;
 
 
     public RestaurantTable()
     {
-        bd = new List<DateTime>();
+        basedate = new List<DateTime>();
     }
 
     public bool Book(DateTime d)
     {
         try
         { 
-            if (bd.Contains(d))
+            if (basedate.Contains(d))
             {
                 return false;
             }
-            bd.Add(d);
+            basedate.Add(d);
             return true;
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Error");
+            Console.WriteLine("Error Book");
             return false;
         }
     }
     public bool IsBooked(DateTime d)
     {
-        return bd.Contains(d);
+        return basedate.Contains(d);
     }
 }
