@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "fFbErwJrJQcFfY/0bdCDQpHqzcTbictpa4MU6Mc7tWMqFXlqYP5uHE67Od/oZHOVWov6GZUVQhpaLP1Db8w3vw==",
+  "dgSpecHash": "6keK+IEwRNmG7zV0myZmcepJbjBH8K8XJd33uJmeyxwkVpGp4LcP8/wvZ8eY/rNeIweZ4mkW7BcgNd1uI0QR4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\kazmur\\Desktop\\OOP_Maks_two\\OOP\\ConsoleAppRestaurantTableReservationManager\\ConsoleAppRestaurantTableReservationManager.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kazmur\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\kazmur\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\kazmur\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512"
+  ],
   "logs": []
 }

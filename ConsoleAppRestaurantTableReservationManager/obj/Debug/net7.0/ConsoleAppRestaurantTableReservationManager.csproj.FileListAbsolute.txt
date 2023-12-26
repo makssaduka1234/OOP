@@ -26,3 +26,6 @@ C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationMan
 C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationManager\obj\Debug\net7.0\ConsoleAppRestaurantTableReservationManager.pdb
 C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationManager\obj\Debug\net7.0\ConsoleAppRestaurantTableReservationManager.genruntimeconfig.cache
 C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationManager\obj\Debug\net7.0\ref\ConsoleAppRestaurantTableReservationManager.dll
+C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationManager\bin\Debug\net7.0\nunit.framework.dll
+C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationManager\obj\Debug\net7.0\ConsoleAppRestaurantTableReservationManager.csproj.AssemblyReference.cache
+C:\Users\kazmur\Desktop\OOP_Maks_two\OOP\ConsoleAppRestaurantTableReservationManager\obj\Debug\net7.0\ConsoleAppRestaurantTableReservationManager.csproj.CopyComplete
