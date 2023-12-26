@@ -21,14 +21,12 @@ namespace ReservationManagers
         {
             try
             {
-                Restaurant resturans = new Restaurant();
-                resturans.name = n;
-                resturans.table = new RestaurantTable[t];
-                for (int i = 0; i < t; i++)
+                Restaurant restaurant = new Restaurant
                 {
-                    resturans.table[i] = new RestaurantTable();
-                }
-                res.Add(resturans);
+                    name = n,
+                    table = Enumerable.Range(0, t).Select(_ => new RestaurantTable()).ToArray()
+                };
+                res.Add(restaurant);
             }
             catch (Exception ex)
             {
@@ -62,18 +60,14 @@ namespace ReservationManagers
         {
             try
             {
-                List<string> free = new List<string>();
-                foreach (var r in res)
-                {
-                    for (int i = 0; i < r.table.Length; i++)
-                    {
-                        if (!r.table[i].IsBooked(dt))
-                        {
-                            free.Add($"{r.name} - Table {i + 1}");
-                        }
-                    }
-                }
-                return free;
+                return res
+                    .SelectMany(r =>
+                        r.table
+                            .Select((table, i) => new { RestaurantName = r.name, TableNumber = i + 1, IsBooked = table.IsBooked(dt) })
+                    )
+                    .Where(t => !t.IsBooked)
+                    .Select(t => $"{t.RestaurantName} - Table {t.TableNumber}")
+                    .ToList();
             }
             catch (Exception ex)
             {
@@ -82,65 +76,46 @@ namespace ReservationManagers
             }
         }
 
-        public bool BookTable(string rName, DateTime d, int tNumber)
-        {
-            foreach (var r in res)
-            {
-                if (r.name == rName)
-                {
-                    if (tNumber < 0 || tNumber >= r.table.Length)
-                    {
-                        throw new Exception(null);
-                    }
 
-                    return r.table[tNumber].Book(d);
+        public bool BookTable(string restaurantName, DateTime date, int tableNumber)
+        {
+            try
+            {
+                var restaurant = res.FirstOrDefault(r => r.name == restaurantName);
+
+                if (restaurant != null && tableNumber >= 0 && tableNumber < restaurant.table.Length)
+                {
+                    return restaurant.table[tableNumber].Book(date);
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error BookTable");
             }
 
             throw new Exception(null);
         }
 
+
         public void SortResByAvail(DateTime dt)
         {
             try
             {
-                bool swapped;
-                do
-                {
-                    swapped = false;
-                    for (int i = 0; i < res.Count - 1; i++)
-                    {
-                        int avTc = CountAvailableTables(res[i], dt);
-                        int avTn = CountAvailableTables(res[i + 1], dt);
-
-                        if (avTc < avTn)
-                        {
-                            var temp = res[i];
-                            res[i] = res[i + 1];
-                            res[i + 1] = temp;
-                            swapped = true;
-                        }
-                    }
-                } while (swapped);
+                res = res
+                    .OrderByDescending(r => CountAvailableTables(r, dt))
+                    .ToList();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error SortResByAvail");
             }
         }
+
         public int CountAvailableTables(Restaurant r, DateTime dt)
         {
             try
             {
-                int count = 0;
-                foreach (var t in r.table)
-                {
-                    if (!t.IsBooked(dt))
-                    {
-                        count++;
-                    }
-                }
-                return count;
+                return r.table.Count(t => !t.IsBooked(dt));
             }
             catch (Exception ex)
             {
@@ -148,5 +123,6 @@ namespace ReservationManagers
                 return 0;
             }
         }
+
     }
 }

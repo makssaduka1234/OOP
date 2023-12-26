@@ -12,6 +12,6 @@ namespace Restaurants
     public class Restaurant
     {
         public string name;
-        public RestaurantTable[] table;
+        public ReservationManagers.RestaurantTable[] table;
     }
 }

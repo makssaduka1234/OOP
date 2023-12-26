@@ -27,6 +27,7 @@ namespace RestaurantTables
                 {
                     return false;
                 }
+
                 basedate.Add(d);
                 return true;
             }
@@ -36,6 +37,7 @@ namespace RestaurantTables
                 return false;
             }
         }
+
         public bool IsBooked(DateTime d)
         {
             return basedate.Contains(d);
